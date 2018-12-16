@@ -5,4 +5,14 @@ class Student
     @name = name
     @grade = grade
   end
+
+  def self.create_table
+    DB[:conn].execute("""
+            create table if not exists students(
+              id integer primary key,
+              name text,
+              grade integer
+            );
+            """)
+  end
 end
